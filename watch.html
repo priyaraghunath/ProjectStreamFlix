@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watch Video - StreamFlix</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    #videoContainer {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+      max-width: 960px;
+      width: 90%;
+    }
+
+    #videoContainer h1 {
+      font-size: 32px;
+      color: red;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #backButton {
+      margin-top: 20px;
+      background-color: red;
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #backButton:hover {
+      background-color: #e50914;
+    }
+  </style>
+</head>
+<body>
+  <div id="videoContainer">
+    <h1>Now Playing</h1>
+    <video id="videoPlayer" controls autoplay></video>
+  </div>
+  <button id="backButton" onclick="window.location.href='index.html'">← Back to Home</button>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoUrl = urlParams.get("videoUrl");
+
+    if (videoUrl) {
+      document.getElementById("videoPlayer").src = decodeURIComponent(videoUrl);
+    }
+  </script>
+</body>
+</html>
